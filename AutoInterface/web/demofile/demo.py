@@ -16,7 +16,8 @@ class RunMain:
 
     def send_get(self,url,data):
         res = requests.get(url,data).json()
-        return json.dumps(res,indent=2,sort_keys=True)
+        # return 
+        return res
 
     def run_main(self,url,method,data=None):
         res = None
