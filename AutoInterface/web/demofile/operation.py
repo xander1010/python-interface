@@ -1,15 +1,17 @@
 import xlrd
 import os,sys
-# data = xlrd.open_workbook('E:\python接口\AutoInterface\web\demofile\interface.xlsx')
 
 class OperationExcel:
     def __init__(self,file_neme=None,sheet_id=None):
         if file_neme:
-            self.file_neme = file_neme
+            path = os.path.dirname(__file__)
+            self.file_neme = path + '/' + file_neme
             self.sheet_id = sheet_id
         else:
-            # self.file_neme = 'interface.xlsx'
-            self.file_neme = 'E:\python接口\AutoInterface\web\demofile\interface.xlsx'
+            # 获取当前文件所在路径
+            path = os.path.dirname(__file__)
+            self.file_neme = path + '/Newfile.xls'
+            # self.file_neme = 'E:\python接口\AutoInterface\web\demofile\interface.xlsx'
             self.sheet_id = 0
         self.data = self.get_data()
 
@@ -32,7 +34,9 @@ if __name__ == '__main__':
     opers = OperationExcel()
     # print(opers.get_data().nrows)
 
-    print(os.path.abspath('AutoInterface/interface.xlsx'))
-    print(os.path.abspath('.'))
-    print(os.path.abspath('..接下来看7.4'))
+    print(opers.get_lines())
+    print(opers.get_cell_value(1,1))
+    
+    # 获取指定路径或文件的绝对路径
+    print(os.path.abspath('interface.xlsx'))
 
